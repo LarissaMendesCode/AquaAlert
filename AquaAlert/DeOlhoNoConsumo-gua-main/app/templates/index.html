@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Sustentável</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Arial', sans-serif;
+        background: url("ImagemHome.png") no-repeat center center/cover;
+        background-color: #e6f7ff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .form-container {
+        background: rgba(240, 248, 255, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+        margin-top: 50px;
+        overflow-y: auto;
+        flex-grow: 1;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      h3 {
+        font-size: 1.2em;
+        color: #0056b3;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      label {
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+
+      button {
+        background-color: #63a4ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      button:hover {
+        background-color: #007bff;
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .footer-logo {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        width: auto;
+        text-align: center;
+      }
+
+      .footer-logo img {
+        max-width: 150px;
+        height: auto;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+
+      .footer-logo img:hover {
+        opacity: 1;
+      }
+
+      /* Ajustando margem da parte inferior para o logo */
+      .footer-logo {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Calculadora Sustentável</h1>
+      <form method="POST" action="/calcular">
+        <h3>Chuveiro</h3>
+        <label for="tempobanho">Tempo médio de banho (min):</label>
+        <input type="number" id="tempobanho" name="tempobanho" step="0.1" required />
+
+        <label for="qtdebanho">Número de banhos por dia:</label>
+        <input type="number" id="qtdebanho" name="qtdebanho" required />
+
+        <h3>Torneira</h3>
+        <label for="tempo_maos">Tempo para lavar as mãos (min):</label>
+        <input type="number" id="tempo_maos" name="tempo_maos" step="0.1" required />
+
+        <label for="vezes_maos">Frequência para lavar as mãos:</label>
+        <input type="number" id="vezes_maos" name="vezes_maos" required />
+
+        <label for="tempo_dentes">Tempo para escovar os dentes (min):</label>
+        <input type="number" id="tempo_dentes" name="tempo_dentes" step="0.1" required />
+
+        <label for="vezes_dentes">Frequência para escovar os dentes:</label>
+        <input type="number" id="vezes_dentes" name="vezes_dentes" required />
+
+        <label for="tempo_louca">Tempo para lavar louça (min):</label>
+        <input type="number" id="tempo_louca" name="tempo_louca" step="0.1" required />
+
+        <label for="vezes_louca">Frequência para lavar louça:</label>
+        <input type="number" id="vezes_louca" name="vezes_louca" required />
+
+        <label for="arejador">Torneira:</label>
+        <select id="arejador" name="arejador" required>
+          <option value="1">Com arejador</option>
+          <option value="2">Sem arejador</option>
+        </select>
+
+        <h3>Descarga</h3>
+        <label for="qtd_descarga">Número de descargas por dia:</label>
+        <input type="number" id="qtd_descarga" name="qtd_descarga" required />
+
+        <h3>Conta</h3>
+        <label for="volumeatual">Volume atual da fatura (m³):</label>
+        <input type="number" id="volumeatual" name="volumeatual" step="0.1" required />
+
+        <label for="reais_atual">Valor atual da conta (R$):</label>
+        <input type="number" id="reais_atual" name="reais_atual" step="0.01" required />
+
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+          <option value="1">Residencial Social</option>
+          <option value="2">Residencial Popular</option>
+          <option value="3">Residencial Normal</option>
+        </select>
+
+        <button type="submit">Calcular</button>
+      </form>
+    </div>
+
+    <div class="footer-logo">
+      <img
+        src="static/LOGO_UNIFOR_3_page-0001-removebg-preview.png"
+        alt="Logo Unifor"
+      />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
